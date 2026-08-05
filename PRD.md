@@ -8,8 +8,6 @@
 
 ---
 
----
-
 ## 0. Step Zero — GitHub Repo & PR Workflow
 
 Before writing any code, set up the project repository on GitHub and establish a Pull Request (PR) workflow. 
@@ -142,7 +140,7 @@ Install and configure Tailwind CSS (v4) for styling.
 
 ## 5. Data Model (TypeScript)
 
-### 5.1 Types — create `src/types/index.ts`
+### 5.1 Types
 
 ```typescript
 // All possible application statuses
@@ -177,7 +175,7 @@ export interface Application {
 }
 ```
 
-### 5.2 Status Display Config — create `src/config/statuses.ts`
+### 5.2 Status Display Config
 
 ```typescript
 import { ApplicationStatus } from "../types";
@@ -257,12 +255,12 @@ Each day follows the same rhythm: **branch → code → commit → push → PR �
 
 | Day | Branch | Focus | Deliverables | PR |
 |-----|--------|-------|-------------|----|
-| **Day 1** | `day-1/project-setup` | **Setup & Learn** | Initialize Vite+React+TS+Tailwind (Section 3). Get dev server running. Read React docs: [Quick Start](https://react.dev/learn). Build a "Hello World" component. | PR #1: "Day 1: Project Setup" |
-| **Day 2** | `day-2/types-and-layout` | **Types & Layout** | Create TypeScript types (Section 5). Build `Header`, `StatsBar` (static), `Footer`. Style with Tailwind dark theme. | PR #2: "Day 2: Types & Layout" |
-| **Day 3** | `day-3/storage-and-data` | **Storage & Data** | Build `useLocalStorage` hook. Create add/edit/delete helpers. Wire up `App.tsx` state. Test with dummy data. | PR #3: "Day 3: Storage & Data" |
-| **Day 4** | `day-4/form-and-modal` | **Form & Modal** | Build `ApplicationModal` + `ApplicationForm`. Handle submit — add new apps. Display with `ApplicationList` + `ApplicationCard`. | PR #4: "Day 4: Form & Modal" |
-| **Day 5** | `day-5/edit-delete-status` | **Edit, Delete & Status** | Implement edit (pre-fill form), delete (`ConfirmDialog`), status updates. Build `StatusBadge`. | PR #5: "Day 5: Edit, Delete & Status" |
-| **Day 6** | `day-6/search-filter-polish` | **Search, Filter & Polish** | Add `FilterBar` — search, status filter, sort. Dynamic `StatsBar`. Empty state, animations, responsive. | PR #6: "Day 6: Search & Polish" |
+| **Day 1** | `day-1/project-setup` | **Setup & Learn** | Initialize Vite+React+TS+Tailwind (Section 3). Get dev server running. Read React docs. Build an initial landing component. | PR #1: "Day 1: Project Setup" |
+| **Day 2** | `day-2/types-and-layout` | **Types & Layout** | Create TypeScript types (Section 5). Build header, stats summary, and footer. Style with Tailwind dark theme. | PR #2: "Day 2: Types & Layout" |
+| **Day 3** | `day-3/storage-and-data` | **Storage & Data** | Build storage hook and data helpers. Wire up application state. Test with dummy data. | PR #3: "Day 3: Storage & Data" |
+| **Day 4** | `day-4/form-and-modal` | **Form & Modal** | Build modal and form components. Handle submit to add new apps. Render cards list. | PR #4: "Day 4: Form & Modal" |
+| **Day 5** | `day-5/edit-delete-status` | **Edit, Delete & Status** | Implement edit (pre-fill form), delete confirmation, and status updates. Build status badges. | PR #5: "Day 5: Edit, Delete & Status" |
+| **Day 6** | `day-6/search-filter-polish` | **Search, Filter & Polish** | Add search, status filter, and date sorting. Make stats dynamic. Add empty state and responsive design. | PR #6: "Day 6: Search & Polish" |
 | **Day 7** | `day-7/deploy-and-readme` | **Deploy & README** | Deploy to GitHub Pages. Write README with screenshots. Test on mobile. Final fixes. | PR #7: "Day 7: Deploy & Docs" |
 
 > [!NOTE]
