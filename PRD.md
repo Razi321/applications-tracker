@@ -224,18 +224,18 @@ graph TD
 
 ### 6.2 Components Breakdown
 
-| Component | File | Responsibility |
-|-----------|------|----------------|
-| **App** | `src/App.tsx` | Root component. Holds state, renders layout. |
-| **Header** | `src/components/Header.tsx` | App title + "Add New" button |
-| **StatsBar** | `src/components/StatsBar.tsx` | Summary cards (total, interviews, offers, etc.) |
-| **FilterBar** | `src/components/FilterBar.tsx` | Search input + status dropdown + sort selector |
-| **ApplicationList** | `src/components/ApplicationList.tsx` | Maps over filtered apps, renders cards. Shows empty state. |
-| **ApplicationCard** | `src/components/ApplicationCard.tsx` | Single application card with status badge, edit/delete buttons |
-| **ApplicationModal** | `src/components/ApplicationModal.tsx` | Modal wrapper using `<dialog>`. Contains the form. |
-| **ApplicationForm** | `src/components/ApplicationForm.tsx` | The actual form with inputs, validation, submit handler |
-| **ConfirmDialog** | `src/components/ConfirmDialog.tsx` | "Are you sure?" confirmation for deletes |
-| **StatusBadge** | `src/components/StatusBadge.tsx` | Reusable colored badge showing status emoji + label |
+| Component | Responsibility |
+|-----------|----------------|
+| **App** | Root component. Holds state, renders layout. |
+| **Header** | App title + "Add New" button |
+| **StatsBar** | Summary cards (total, interviews, offers, etc.) |
+| **FilterBar** | Search input + status dropdown + sort selector |
+| **ApplicationList** | Maps over filtered apps, renders cards. Shows empty state. |
+| **ApplicationCard** | Single application card with status badge, edit/delete buttons |
+| **ApplicationModal** | Modal wrapper using `<dialog>`. Contains the form. |
+| **ApplicationForm** | The actual form with inputs, validation, submit handler |
+| **ConfirmDialog** | "Are you sure?" confirmation for deletes |
+| **StatusBadge** | Reusable colored badge showing status emoji + label |
 
 ### 6.3 State Management
 
@@ -256,45 +256,9 @@ const [editingApp, setEditingApp] = useState<Application | null>(null);
 
 ---
 
-## 7. File Structure
+## 7. UI / UX Specifications
 
-```
-applications-tracker/
-├── index.html
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-├── PRD.md                          ← This document
-├── README.md
-└── src/
-    ├── main.tsx                    ← React entry point
-    ├── App.tsx                     ← Root component
-    ├── index.css                   ← Tailwind import
-    ├── types/
-    │   └── index.ts                ← Application interface, enums
-    ├── config/
-    │   └── statuses.ts             ← Status display config (colors, emojis)
-    ├── hooks/
-    │   └── useLocalStorage.ts      ← Custom hook for localStorage
-    ├── utils/
-    │   └── helpers.ts              ← Date formatting, CSV export, etc.
-    └── components/
-        ├── Header.tsx
-        ├── StatsBar.tsx
-        ├── FilterBar.tsx
-        ├── ApplicationList.tsx
-        ├── ApplicationCard.tsx
-        ├── ApplicationModal.tsx
-        ├── ApplicationForm.tsx
-        ├── ConfirmDialog.tsx
-        └── StatusBadge.tsx
-```
-
----
-
-## 8. UI / UX Specifications
-
-### 8.1 Design Guidelines
+### 7.1 Design Guidelines
 
 | Aspect | Guideline |
 |--------|-----------|
@@ -320,7 +284,7 @@ Borders:      border-gray-700/50 (subtle dividers)
 
 ---
 
-## 9. Key React Patterns to Study & Implement
+## 8. Key React Patterns to Study & Implement
 
 Instead of installing external libraries, research and implement the following standard patterns:
 
@@ -338,7 +302,7 @@ Use local component state to control input values and handle form updates in a u
 
 ---
 
-## 10. One-Week Schedule
+## 9. One-Week Schedule
 
 Each day follows the same rhythm: **branch → code → commit → push → PR → merge**.
 
@@ -362,7 +326,7 @@ Each day follows the same rhythm: **branch → code → commit → push → PR �
 
 ---
 
-## 11. Learning Objectives
+## 10. Learning Objectives
 
 By the end of this project, you will have practiced:
 
@@ -377,7 +341,7 @@ By the end of this project, you will have practiced:
 
 ---
 
-## 12. Helpful Resources
+## 11. Helpful Resources
 
 | Topic | Resource |
 |-------|----------|
@@ -393,7 +357,7 @@ By the end of this project, you will have practiced:
 
 ---
 
-## 13. Acceptance Criteria (Definition of Done)
+## 12. Acceptance Criteria (Definition of Done)
 
 The project is **done** when:
 
