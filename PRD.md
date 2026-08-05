@@ -294,56 +294,7 @@ applications-tracker/
 
 ## 8. UI / UX Specifications
 
-### 8.1 Page Layout
-
-```
-┌──────────────────────────────────────────────────┐
-│  🔍 Applications Tracker              [+ Add New]│  ← Header
-├──────────────────────────────────────────────────┤
-│  Total: 24  │ Interviews: 5 │ Offers: 2 │ ...   │  ← StatsBar
-├──────────────────────────────────────────────────┤
-│  [Search... 🔍]  [Status ▼]  [Sort by Date ▼]   │  ← FilterBar
-├──────────────────────────────────────────────────┤
-│                                                  │
-│  ┌────────────────────────────────────────────┐  │
-│  │ Google  ·  Frontend Dev  ·  🇯🇵 Japan      │  │
-│  │ Applied: Aug 1  ·  Status: 🎤 Interview   │  │  ← ApplicationCard
-│  │ [Edit] [Delete]                            │  │
-│  └────────────────────────────────────────────┘  │
-│                                                  │
-│  ┌────────────────────────────────────────────┐  │
-│  │ Amazon  ·  SDE II  ·  🇺🇸 USA              │  │
-│  │ Applied: Jul 28  ·  Status: ❌ Rejected    │  │  ← ApplicationCard
-│  │ [Edit] [Delete]                            │  │
-│  └────────────────────────────────────────────┘  │
-│                                                  │
-├──────────────────────────────────────────────────┤
-│  Applications Tracker · Data stored locally      │  ← Footer
-└──────────────────────────────────────────────────┘
-```
-
-### 8.2 Add/Edit Modal
-
-```
-┌─────────────── Add Application ───────────────┐
-│                                               │
-│  Company Name *    [___________________]      │
-│  Position *        [___________________]      │
-│  Application URL   [___________________]      │
-│  Country           [___________________]      │
-│  Location          [___________________]      │
-│  Status *          [Applied         ▼]        │
-│  Date Applied *    [2026-08-05      📅]       │
-│  Salary Range      [___________________]      │
-│  Contact Person    [___________________]      │
-│  Notes             [___________________]      │
-│                    [___________________]      │
-│                                               │
-│           [Cancel]          [Save]            │
-└───────────────────────────────────────────────┘
-```
-
-### 8.3 Design Guidelines
+### 8.1 Design Guidelines
 
 | Aspect | Guideline |
 |--------|-----------|
@@ -357,7 +308,7 @@ applications-tracker/
 | **Border Radius** | `rounded-xl` for cards, `rounded-lg` for inputs |
 | **Spacing** | Consistent `p-4` / `p-6` padding, `gap-4` between cards |
 
-### 8.4 Tailwind Color Reference
+### 8.2 Tailwind Color Reference
 
 ```
 Background:   bg-gray-950 (page), bg-gray-900 (cards), bg-gray-800 (inputs)
@@ -365,6 +316,7 @@ Text:         text-white (headings), text-gray-300 (body), text-gray-500 (muted)
 Accent:       blue-500, violet-500 (buttons, links, highlights)
 Borders:      border-gray-700/50 (subtle dividers)
 ```
+
 
 ---
 
