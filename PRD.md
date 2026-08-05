@@ -203,61 +203,11 @@ export const STATUS_CONFIG: Record<ApplicationStatus, StatusConfig> = {
 };
 ```
 
----
 
-## 6. Component Architecture
 
-### 6.1 Component Tree
+## 6. UI / UX Specifications
 
-```mermaid
-graph TD
-    A["App"] --> B["Header"]
-    A --> C["StatsBar"]
-    A --> D["FilterBar"]
-    A --> E["ApplicationList"]
-    A --> F["ApplicationModal"]
-    A --> G["ConfirmDialog"]
-    E --> H["ApplicationCard"]
-    F --> I["ApplicationForm"]
-```
-
-### 6.2 Components Breakdown
-
-| Component | Responsibility |
-|-----------|----------------|
-| **App** | Root component. Holds state, renders layout. |
-| **Header** | App title + "Add New" button |
-| **StatsBar** | Summary cards (total, interviews, offers, etc.) |
-| **FilterBar** | Search input + status dropdown + sort selector |
-| **ApplicationList** | Maps over filtered apps, renders cards. Shows empty state. |
-| **ApplicationCard** | Single application card with status badge, edit/delete buttons |
-| **ApplicationModal** | Modal wrapper using `<dialog>`. Contains the form. |
-| **ApplicationForm** | The actual form with inputs, validation, submit handler |
-| **ConfirmDialog** | "Are you sure?" confirmation for deletes |
-| **StatusBadge** | Reusable colored badge showing status label |
-
-### 6.3 State Management
-
-Use **React `useState`** — no Redux or external state library needed for this project.
-
-State lives in `App.tsx`:
-```typescript
-const [applications, setApplications] = useState<Application[]>([]);
-const [searchQuery, setSearchQuery] = useState("");
-const [statusFilter, setStatusFilter] = useState<ApplicationStatus | "all">("all");
-const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [editingApp, setEditingApp] = useState<Application | null>(null);
-```
-
-> [!TIP]
-> **Custom Hook:** Extract localStorage logic into a `useLocalStorage` hook in `src/hooks/useLocalStorage.ts`. This makes it reusable and keeps `App.tsx` clean.
-
----
-
-## 7. UI / UX Specifications
-
-### 7.1 Design Guidelines
+### 6.1 Design Guidelines
 
 | Aspect | Guideline |
 |--------|-----------|
@@ -271,7 +221,7 @@ const [editingApp, setEditingApp] = useState<Application | null>(null);
 | **Border Radius** | `rounded-xl` for cards, `rounded-lg` for inputs |
 | **Spacing** | Consistent `p-4` / `p-6` padding, `gap-4` between cards |
 
-### 8.2 Tailwind Color Reference
+### 6.2 Tailwind Color Reference
 
 ```
 Background:   bg-gray-950 (page), bg-gray-900 (cards), bg-gray-800 (inputs)
@@ -283,25 +233,25 @@ Borders:      border-gray-700/50 (subtle dividers)
 
 ---
 
-## 8. Key React Patterns to Study & Implement
+## 7. Key React Patterns to Study & Implement
 
 Instead of installing external libraries, research and implement the following standard patterns:
 
-### 9.1 Custom Hooks for State Persistence
+### 7.1 Custom Hooks for State Persistence
 Implement a custom React hook (e.g., `useLocalStorage`) that wraps `useState` but automatically serializes the state to JSON and synchronizes it with the browser's `localStorage` API whenever it changes.
 
-### 9.2 Props and Component Communication
-Understand how to pass state down from `App.tsx` to list and card components, and how to pass handler callbacks back up to modify the parent state.
+### 7.2 Props and Component Communication
+Understand how to pass state down from root components to list and card components, and how to pass handler callbacks back up to modify state.
 
-### 9.3 Conditional Rendering
+### 7.3 Conditional Rendering
 Render different layouts dynamically based on application state (e.g., showing a placeholder/empty-state screen if the user has no applications versus rendering the application card list).
 
-### 9.4 Controlled Form Inputs
+### 7.4 Controlled Form Inputs
 Use local component state to control input values and handle form updates in a unified object before submitting, matching input name properties to form fields.
 
 ---
 
-## 9. One-Week Schedule
+## 8. One-Week Schedule
 
 Each day follows the same rhythm: **branch → code → commit → push → PR → merge**.
 
@@ -325,7 +275,7 @@ Each day follows the same rhythm: **branch → code → commit → push → PR �
 
 ---
 
-## 10. Learning Objectives
+## 9. Learning Objectives
 
 By the end of this project, you will have practiced:
 
@@ -340,7 +290,7 @@ By the end of this project, you will have practiced:
 
 ---
 
-## 11. Helpful Resources
+## 10. Helpful Resources
 
 | Topic | Resource |
 |-------|----------|
@@ -356,7 +306,7 @@ By the end of this project, you will have practiced:
 
 ---
 
-## 12. Acceptance Criteria (Definition of Done)
+## 11. Acceptance Criteria (Definition of Done)
 
 The project is **done** when:
 
