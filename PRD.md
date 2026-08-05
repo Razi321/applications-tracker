@@ -8,72 +8,21 @@
 
 ---
 
+---
+
 ## 0. Step Zero — GitHub Repo & PR Workflow
 
-> [!IMPORTANT]
-> **Do this FIRST before writing any code.** This is how real engineering teams work.
+Before writing any code, set up the project repository on GitHub and establish a Pull Request (PR) workflow. 
 
-### 0.1 Create Your GitHub Repository
+### 0.1 GitHub Repository Setup
+Create a new public repository on GitHub named `applications-tracker`. Clone the repository locally to begin development.
 
-1. Go to [github.com/new](https://github.com/new)
-2. **Repository name:** `applications-tracker`
-3. **Description:** "Job applications tracker built with React + TypeScript"
-4. **Visibility:** Public
-5. Check **"Add a README file"**
-6. Click **"Create repository"**
-7. Clone it locally:
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/applications-tracker.git
-   cd applications-tracker
-   ```
-
-### 0.2 How You Will Work — Branch + PR + Merge
-
-**You will NEVER commit directly to `main`.** Instead, for every piece of work:
-
-```
-main (protected) ← PR ← feature-branch (your work)
-```
-
-Here's the workflow you'll repeat every day:
-
-#### 1️⃣ Create a branch
-```bash
-# Make sure you're on main and up to date
-git checkout main
-git pull origin main
-
-# Create a new branch for today's work
-git checkout -b day-1/project-setup
-```
-
-#### 2️⃣ Do your work, commit often
-```bash
-# Stage and commit your changes
-git add .
-git commit -m "feat: initialize Vite + React + TypeScript project"
-
-# Push the branch to GitHub
-git push origin day-1/project-setup
-```
-
-#### 3️⃣ Open a Pull Request on GitHub
-1. Go to your repo on GitHub
-2. You'll see a banner: **"day-1/project-setup had recent pushes — Compare & pull request"**
-3. Click it
-4. **Title:** `Day 1: Project Setup — Vite + React + TS + Tailwind`
-5. **Description:** Write what you did (2-3 bullet points)
-6. Click **"Create pull request"**
-
-#### 4️⃣ Merge the PR
-1. On the PR page, click **"Merge pull request"**
-2. Click **"Confirm merge"**
-3. Click **"Delete branch"** (keeps things clean)
-4. Back in your terminal:
-   ```bash
-   git checkout main
-   git pull origin main
-   ```
+### 0.2 PR-Based Workflow
+All development must follow a branch-and-merge strategy. Direct commits to the `main` branch are prohibited.
+- For each day's task, create a dedicated feature branch using the naming convention below.
+- Commit code with descriptive messages.
+- Push the branch to GitHub and open a Pull Request (PR).
+- Merge the PR to `main` once the daily feature is fully verified.
 
 ### 0.3 Branch Naming Convention
 
@@ -88,14 +37,6 @@ Use this format: `day-N/short-description`
 | Day 5 | `day-5/edit-delete-status` | Day 5: Edit, Delete & Status |
 | Day 6 | `day-6/search-filter-polish` | Day 6: Search, Filter & Polish |
 | Day 7 | `day-7/deploy-and-readme` | Day 7: Deploy & README |
-
-> [!TIP]
-> **Commit often, not just once at the end of the day.** Good commits are small and describe one thing:
-> - ✅ `feat: add ApplicationCard component`
-> - ✅ `fix: status badge color not showing`
-> - ✅ `style: add hover animation to cards`
-> - ❌ `did stuff` 
-> - ❌ `update`
 
 ### 0.4 Commit Message Format
 
@@ -156,65 +97,19 @@ Anyone actively applying for jobs who wants a simple, free, private tracker that
 ## 3. Project Setup (Day 1)
 
 ### 3.1 Initialize the Project
+Initialize a new React project using Vite with TypeScript. Set up the development server and verify it runs successfully.
 
-```bash
-# Navigate to the project folder
-cd ~/Desktop/applications-tracker
+Install and configure Tailwind CSS (v4) for styling.
 
-# Create Vite + React + TypeScript project in current directory
-npx -y create-vite@latest ./ --template react-ts
-
-# Install dependencies
-npm install
-
-# Install Tailwind CSS v4
-npm install tailwindcss @tailwindcss/vite
-
-# Start dev server
-npm run dev
-```
-
-### 3.2 Configure Tailwind CSS
-
-Add the Tailwind plugin to **`vite.config.ts`**:
-```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
-  base: '/applications-tracker/',  // Required for GitHub Pages
-})
-```
-
-Replace the contents of **`src/index.css`** with:
-```css
-@import "tailwindcss";
-```
+### 3.2 Configure Project Settings
+- Configure the Vite build system to include the Tailwind CSS plugin.
+- Ensure the build base path matches the repository name (e.g., `/applications-tracker/`) to support GitHub Pages.
+- Import Tailwind's stylesheet directives into the application's global CSS file.
 
 ### 3.3 Configure GitHub Pages Deployment
-
-Install the deployment package:
-```bash
-npm install --save-dev gh-pages
-```
-
-Add these scripts to **`package.json`**:
-```json
-{
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  }
-}
-```
-
-To deploy: `npm run deploy`  
-Site will be live at: `https://razi321.github.io/applications-tracker/`
+- Configure the build and deploy settings in the project configuration.
+- Integrate a tool/script configuration in `package.json` that automates building the project (`npm run build`) and deploying the output folder (typically `dist`) to the `gh-pages` branch on GitHub.
+- After deployment, the project should be live at: `https://YOUR-USERNAME.github.io/applications-tracker/`
 
 ---
 
@@ -473,61 +368,21 @@ Borders:      border-gray-700/50 (subtle dividers)
 
 ---
 
-## 9. Key React Patterns to Learn
+## 9. Key React Patterns to Study & Implement
 
-### 9.1 Custom Hook — `useLocalStorage`
+Instead of installing external libraries, research and implement the following standard patterns:
 
-```typescript
-// src/hooks/useLocalStorage.ts
-import { useState, useEffect } from "react";
+### 9.1 Custom Hooks for State Persistence
+Implement a custom React hook (e.g., `useLocalStorage`) that wraps `useState` but automatically serializes the state to JSON and synchronizes it with the browser's `localStorage` API whenever it changes.
 
-export function useLocalStorage<T>(key: string, initialValue: T) {
-  const [value, setValue] = useState<T>(() => {
-    const stored = localStorage.getItem(key);
-    return stored ? JSON.parse(stored) : initialValue;
-  });
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
-
-  return [value, setValue] as const;
-}
-```
-
-### 9.2 Passing Props
-
-```typescript
-// Parent passes data + callbacks down to children
-<ApplicationCard
-  application={app}
-  onEdit={(app) => openEditModal(app)}
-  onDelete={(id) => handleDelete(id)}
-/>
-```
+### 9.2 Props and Component Communication
+Understand how to pass state down from `App.tsx` to list and card components, and how to pass handler callbacks back up to modify the parent state.
 
 ### 9.3 Conditional Rendering
+Render different layouts dynamically based on application state (e.g., showing a placeholder/empty-state screen if the user has no applications versus rendering the application card list).
 
-```tsx
-{applications.length === 0 ? (
-  <EmptyState />
-) : (
-  applications.map(app => <ApplicationCard key={app.id} application={app} />)
-)}
-```
-
-### 9.4 Form Handling
-
-```tsx
-const [formData, setFormData] = useState<Partial<Application>>({});
-
-const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-};
-```
-
-> [!NOTE]
-> These are patterns to study and use — not copy-paste solutions. Understand **why** each pattern works.
+### 9.4 Controlled Form Inputs
+Use local component state to control input values and handle form updates in a unified object before submitting, matching input name properties to form fields.
 
 ---
 
@@ -543,7 +398,7 @@ Each day follows the same rhythm: **branch → code → commit → push → PR �
 | **Day 4** | `day-4/form-and-modal` | **Form & Modal** | Build `ApplicationModal` + `ApplicationForm`. Handle submit — add new apps. Display with `ApplicationList` + `ApplicationCard`. | PR #4: "Day 4: Form & Modal" |
 | **Day 5** | `day-5/edit-delete-status` | **Edit, Delete & Status** | Implement edit (pre-fill form), delete (`ConfirmDialog`), status updates. Build `StatusBadge`. | PR #5: "Day 5: Edit, Delete & Status" |
 | **Day 6** | `day-6/search-filter-polish` | **Search, Filter & Polish** | Add `FilterBar` — search, status filter, sort. Dynamic `StatsBar`. Empty state, animations, responsive. | PR #6: "Day 6: Search & Polish" |
-| **Day 7** | `day-7/deploy-and-readme` | **Deploy & README** | `npm run deploy` to GitHub Pages. Write README with screenshots. Test on mobile. Final fixes. | PR #7: "Day 7: Deploy & Docs" |
+| **Day 7** | `day-7/deploy-and-readme` | **Deploy & README** | Deploy to GitHub Pages. Write README with screenshots. Test on mobile. Final fixes. | PR #7: "Day 7: Deploy & Docs" |
 
 > [!NOTE]
 > **End-of-day checklist:**
@@ -551,7 +406,7 @@ Each day follows the same rhythm: **branch → code → commit → push → PR �
 > 2. Branch pushed to GitHub
 > 3. PR created with a title and short description
 > 4. PR merged to `main`
-> 5. Locally: `git checkout main && git pull`
+> 5. Update your local main branch to match origin main
 
 ---
 
