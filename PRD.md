@@ -1,4 +1,4 @@
-# 📋 Applications Tracker — Product Requirements Document (PRD)
+# Applications Tracker — Product Requirements Document (PRD)
 
 > **Author:** Razi  
 > **Date:** August 5, 2026  
@@ -184,23 +184,22 @@ import { ApplicationStatus } from "../types";
 
 export interface StatusConfig {
   label: string;
-  emoji: string;
   color: string;       // Tailwind text color class
   bgColor: string;     // Tailwind background color class
 }
 
 export const STATUS_CONFIG: Record<ApplicationStatus, StatusConfig> = {
-  [ApplicationStatus.Saved]:       { label: "Saved",       emoji: "📌", color: "text-gray-400",   bgColor: "bg-gray-400/10" },
-  [ApplicationStatus.Applied]:     { label: "Applied",     emoji: "📤", color: "text-blue-400",   bgColor: "bg-blue-400/10" },
-  [ApplicationStatus.InReview]:    { label: "In Review",   emoji: "👀", color: "text-yellow-400", bgColor: "bg-yellow-400/10" },
-  [ApplicationStatus.PhoneScreen]: { label: "Phone Screen",emoji: "📞", color: "text-cyan-400",   bgColor: "bg-cyan-400/10" },
-  [ApplicationStatus.Interview]:   { label: "Interview",   emoji: "🎤", color: "text-purple-400", bgColor: "bg-purple-400/10" },
-  [ApplicationStatus.Technical]:   { label: "Technical",   emoji: "💻", color: "text-indigo-400", bgColor: "bg-indigo-400/10" },
-  [ApplicationStatus.FinalRound]:  { label: "Final Round", emoji: "🏁", color: "text-orange-400", bgColor: "bg-orange-400/10" },
-  [ApplicationStatus.Offer]:       { label: "Offer",       emoji: "🎉", color: "text-green-400",  bgColor: "bg-green-400/10" },
-  [ApplicationStatus.Accepted]:    { label: "Accepted",    emoji: "✅", color: "text-emerald-400",bgColor: "bg-emerald-400/10" },
-  [ApplicationStatus.Rejected]:    { label: "Rejected",    emoji: "❌", color: "text-red-400",    bgColor: "bg-red-400/10" },
-  [ApplicationStatus.Withdrawn]:   { label: "Withdrawn",   emoji: "🚫", color: "text-slate-400",  bgColor: "bg-slate-400/10" },
+  [ApplicationStatus.Saved]:       { label: "Saved",       color: "text-gray-400",   bgColor: "bg-gray-400/10" },
+  [ApplicationStatus.Applied]:     { label: "Applied",     color: "text-blue-400",   bgColor: "bg-blue-400/10" },
+  [ApplicationStatus.InReview]:    { label: "In Review",   color: "text-yellow-400", bgColor: "bg-yellow-400/10" },
+  [ApplicationStatus.PhoneScreen]: { label: "Phone Screen",color: "text-cyan-400",   bgColor: "bg-cyan-400/10" },
+  [ApplicationStatus.Interview]:   { label: "Interview",   color: "text-purple-400", bgColor: "bg-purple-400/10" },
+  [ApplicationStatus.Technical]:   { label: "Technical",   color: "text-indigo-400", bgColor: "bg-indigo-400/10" },
+  [ApplicationStatus.FinalRound]:  { label: "Final Round", color: "text-orange-400", bgColor: "bg-orange-400/10" },
+  [ApplicationStatus.Offer]:       { label: "Offer",       color: "text-green-400",  bgColor: "bg-green-400/10" },
+  [ApplicationStatus.Accepted]:    { label: "Accepted",    color: "text-emerald-400",bgColor: "bg-emerald-400/10" },
+  [ApplicationStatus.Rejected]:    { label: "Rejected",    color: "text-red-400",    bgColor: "bg-red-400/10" },
+  [ApplicationStatus.Withdrawn]:   { label: "Withdrawn",   color: "text-slate-400",  bgColor: "bg-slate-400/10" },
 };
 ```
 
@@ -235,7 +234,7 @@ graph TD
 | **ApplicationModal** | Modal wrapper using `<dialog>`. Contains the form. |
 | **ApplicationForm** | The actual form with inputs, validation, submit handler |
 | **ConfirmDialog** | "Are you sure?" confirmation for deletes |
-| **StatusBadge** | Reusable colored badge showing status emoji + label |
+| **StatusBadge** | Reusable colored badge showing status label |
 
 ### 6.3 State Management
 
@@ -379,4 +378,4 @@ The project is **done** when:
 > [!IMPORTANT]
 > **Don't just copy the code snippets** in this PRD. Type them out, understand what each line does, and experiment by changing things. That's how you actually learn.
 
-> **Good luck! Build something you'd actually want to use.** 🚀
+> **Good luck! Build something you'd actually want to use.**
